@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skribbl.io Dark Mode
 // @author       positivelypositive
-// @match        https://skribbl.io/
+// @include      *https://skribbl.io/*
 // @require      http://code.jquery.com/jquery-3.5.1.min.js
 // @require      https://raw.githubusercontent.com/pie6k/jquery.initialize/master/jquery.initialize.js
 // ==/UserScript==
