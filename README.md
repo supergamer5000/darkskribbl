@@ -1,7 +1,7 @@
 # darkskribbl
 Dark Mode for Skribbl.io. Four dark backgrounds to choose from!
 
-Update 27 Nov 2020: Fixed an issue that did not allow dark mode for custom games.
+Update 27 Nov 2020: Fixed an issue that did not allow dark mode for private/custom games.
 
 TO INSTALL: 
 1) You must have the Tampermonkey extension (preferably on Chrome).
