@@ -73,6 +73,7 @@ function main(){
         $("#audio").css('background', 'url(https://i.imgur.com/EbWX9aT.gif)');
     }
 
+    $('a, a:visited').css('color', 'white');
     $(".updateInfo").css('background-color', 'transparent');
     $(".updateInfo").css('color', 'white');
     $(".updateInfo").css('border', 'white');
