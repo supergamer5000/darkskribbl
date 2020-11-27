@@ -1,5 +1,6 @@
 # darkskribbl
 Dark Mode for Skribbl.io. Four dark backgrounds to choose from!
+
 Update 27 Nov 2020: Fixed an issue that did not allow dark mode for custom games.
 
 TO INSTALL: 
