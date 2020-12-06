@@ -4,6 +4,7 @@
 // @include      *https://skribbl.io/*
 // @require      http://code.jquery.com/jquery-3.5.1.min.js
 // @require      https://raw.githubusercontent.com/pie6k/jquery.initialize/master/jquery.initialize.js
+// @require      http://code.jquery.com/ui/1.12.1/jquery-ui.js
 // ==/UserScript==
 
 /* globals jQuery, $, waitForKeyElements */
@@ -196,3 +197,34 @@ $('#metal').click(function() {
 $('#carbon').click(function() {
     carbon();
 });
+
+$(document).ready(() => { //this video, I coded it so that I can't see anything that's being drawn...
+    $('#containerBoard').append($(`<div id="darken" name="darken" style="width:100%; height:100%; top:0; background-color:black; border:black; pointer-events:none; position:absolute; opacity:0.25">`));
+    $('#boxChat').before($(`<div style="text-align:bottom">
+                            <input id="scroll" name="scroll" style="width:117px; height:16px;" type="range"; min:0; max:100; value:25; position: relative;>
+                            <label for="scroll" style="all: initial; color:white; position: absolute; padding-top: 5px; font-family:calibri; width:100%;">Screen Darkness: 25</label><br>`));
+    $('#boxMessages').css('margin-top', '20px');
+    $('#boxMessages').css('height', 'calc(100% - 87px)');
+    var darkness = localStorage.getItem('darkness');
+
+    if (darkness == null){
+        darkness = 25;
+    }
+
+    $('#scroll').attr('value', darkness);
+    $('#darken').css('opacity', darkness/100);
+    localStorage.setItem('darkness', darkness);
+    label(darkness);
+
+    $('#scroll').on('input', function() {
+        $('#darken').css('opacity', this.value/100);
+        label(this.value);
+    });
+});
+
+function label(darkness){
+    var text = "Screen Darkness: " + String(darkness);
+    localStorage.setItem('darkness', darkness);
+    if (darkness < 100){$('label[for="scroll"]').text(text);}
+    else {$('label[for="scroll"]').text("Screen Darkness: Blind");}
+}
