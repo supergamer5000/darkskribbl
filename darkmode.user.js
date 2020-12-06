@@ -201,7 +201,7 @@ $('#carbon').click(function() {
 $(document).ready(() => { //this video, I coded it so that I can't see anything that's being drawn...
     $('#containerBoard').append($(`<div id="darken" name="darken" style="width:100%; height:100%; top:0; background-color:black; border:black; pointer-events:none; position:absolute; opacity:0.25">`));
     $('#boxChat').before($(`<div style="text-align:bottom">
-                            <input id="scroll" name="scroll" style="width:117px; height:16px; left:0 !important;" type="range"; min:0; max:100; value:25; position: relative;>
+                            <input id="scroll" name="scroll" style="width:117px; height:16px;" type="range"; min:0; max:100; value:25; position: relative;>
                             <label for="scroll" style="all: initial; color:white; position: absolute; padding-top: 5px; font-family:calibri; width:100%;">Screen Darkness: 25</label><br>`));
     $('#boxMessages').css('margin-top', '20px');
     $('#boxMessages').css('height', 'calc(100% - 87px)');
