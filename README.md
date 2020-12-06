@@ -2,6 +2,7 @@
 Dark Mode for Skribbl.io. Four dark backgrounds to choose from!
 
 27 Nov 2020: Fixed an issue that did not allow dark mode for private/custom games.
+
 05 Dec 2020: Added an adjustable dark layer over the canvas, so you don't have to stare at a bright white rectangle. (Note: in Firefox this feature does not fully work as intended. To adjust the darkness you need to move your mouse away from the slider before releasing it.)
 
 TO INSTALL: 
