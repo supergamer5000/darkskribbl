@@ -12,3 +12,5 @@ TO INSTALL:
 
 ![alt text](https://i.imgur.com/WftOLRi.png)
 ![alt text](https://i.imgur.com/PPCnlEX.png)
+
+Disclaimer: This script saves your preferred background and canvas darkness, but does not access any other personal data.
