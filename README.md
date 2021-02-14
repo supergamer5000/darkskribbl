@@ -10,6 +10,8 @@ TO INSTALL:
 
 05 Dec 2020: Added an adjustable dark layer over the canvas, so you don't have to stare at a bright white rectangle. **(Note: in Firefox this feature does not fully work as intended. To adjust the darkness you need to move your mouse away from the slider before releasing it.)**
 
+13 Feb 2020: Added fading-in animation on loading page and fixed minor issues.
+
 ![alt text](https://i.imgur.com/WftOLRi.png)
 ![alt text](https://i.imgur.com/PPCnlEX.png)
 
