@@ -9,7 +9,7 @@ To install, simply get the Tampermonkey extension for Chrome and [click here!](h
 
 13 Feb 2020: Added fading-in animation on loading page and fixed minor issues.
 
-![alt text](https://i.imgur.com/WftOLRi.png)
-![alt text](https://i.imgur.com/PPCnlEX.png)
+![alt text](https://i.imgur.com/3jYS1ij.png)
+![alt text](https://i.imgur.com/WlUsE6d.png)
 
 Disclaimer: This script saves your preferred background and canvas darkness, but does not access any other personal data.
