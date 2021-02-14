@@ -150,7 +150,6 @@ top:0px; width:25%; text-align:center; margin:0;">
             $('#containerGamePlayers').find('.rank, .name, .score').css('color', 'white');
             $('.name:contains(" (You)")').css('color', 'rgb(75, 160, 255)');
             $('.player.guessedWord')
-                .css('background-color', 'rgba(130, 198, 105, 0)')
                 .find('.rank, .name, .score').css('color', 'rgb(86, 206, 39)');
         }, 20);
 
