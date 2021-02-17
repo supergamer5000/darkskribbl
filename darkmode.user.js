@@ -52,14 +52,18 @@
         addRadio("carbon", `Carbon`);
         addRadio("wood", `Wood`);
 
-        var preset = localStorage.getItem('background');
-        if (preset !== null){
-            if (preset == "black"){ background("black", 'black', 'none', $("#black")); }
-            else if (preset == "grey"){ background("grey", '#2c2f33', 'none', $("#grey")); }
-            else if (preset == "carbon"){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $("#carbon")); }
-            else{ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $("#wood")); }
+        switch (localStorage.getItem("background")){
+            case "black": background("black", 'black', 'none', $("#black")); break;
+            case "grey": background("grey", '#2c2f33', 'none', $("#grey")); break;
+            case "carbon": background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $("#carbon")); break;
+            case "wood": background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $("#wood")); break;
+            default: background("black", 'black', 'none', $("#black"));
         }
-        else{ background("black", 'black', 'none', $("#black"), $('#grey, #wood, #carbon')); }
+
+        $('#black').click(function(){ background("black", 'black', 'none', $(this)); });
+        $('#grey').click(function(){ background("grey", '#2c2f33', 'none', $(this)); });
+        $('#wood').click(function(){ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $(this)); });
+        $('#carbon').click(function(){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $(this)); });
 
         $(".logo").attr('src', 'https://i.imgur.com/qsHVGvg.png');
         $("#logoAvatarContainer").remove();
@@ -138,11 +142,6 @@
             $('.player.guessedWord')
                 .find('.rank, .name, .score').css('color', 'rgb(86, 206, 39)');
         }, 20);
-
-        $('#black').click(function(){ background("black", 'black', 'none', $(this)); });
-        $('#grey').click(function(){ background("grey", '#2c2f33', 'none', $(this)); });
-        $('#wood').click(function(){ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $(this)); });
-        $('#carbon').click(function(){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $(this)); });
 
         $.initialize('p[style="color: rgb(0, 0, 0);"]', function(){
             $(this).css("color", "white");
