@@ -35,10 +35,7 @@
         $('#boxMessages').css('height', 'calc(100% - 87px)');
         $("body").css('background-size', 'auto');
         var darkness = localStorage.getItem('darkness');
-
-        if (darkness == null){
-            darkness = 15;
-        }
+        if (darkness == null){ darkness = 15; }
 
         $('#scroll').attr('value', darkness);
         $('#darken').css('opacity', darkness/100);
@@ -49,29 +46,18 @@
             $('#darken').css('opacity', this.value/100);
             label(this.value);
         });
-        $("#formLogin").append($(`<div style="background-color:transparent; position:relative; float:left;
-top:0px; width:25%; text-align:center; margin:0;">
-<input id="black" name="black" style="width:16px; height:16px; margin-top:15px" type="radio">
-<label for="black" style="all: initial; color:white; font-family:calibri; vertical-align:2px; width:25%;">Black</label><br>`))
-            .append($(`<div style="background-color:transparent; position:relative; float:left;
-top:0px; width:25%; text-align:center; margin:0;">
-<input id="grey" name="grey" style="width:16px; height:16px; margin-top:15px" type="radio">
-<label for="grey" style="all: initial; color:white; font-family:calibri; vertical-align:2px; width:25%;">Grey</label><br>`))
-            .append($(`<div style="background-color:transparent; position:relative; float:left;
-top:0px; width:25%; text-align:center; margin:0;">
-<input id="carbon" name="carbon" style="width:16px; height:16px; margin-top:15px" type="radio">
-<label for="carbon" style="all: initial; color:white; font-family:calibri; vertical-align:2px; width:25%;">Carbon</label><br>`))
-            .append($(`<div style="background-color:transparent; position:relative; float:left;
-top:0px; width:25%; text-align:center; margin:0;">
-<input id="wood" name="wood" style="width:16px; height:16px; margin-top:15px" type="radio">
-<label for="wood" style="all: initial; color:white; font-family:calibri; vertical-align:2px; width:25%;">Wood</label><br>`));
+
+        addRadio("black", `Black`);
+        addRadio("grey", `Grey`);
+        addRadio("carbon", `Carbon`);
+        addRadio("wood", `Wood`);
 
         var preset = localStorage.getItem('background');
         if (preset !== null){
-            if (preset == "black"){ background("black", 'black', 'none', $("#black"), $('#grey, #wood, #carbon')); }
-            else if (preset == "grey"){ background("grey", '#2c2f33', 'none', $("#grey"), $('#black, #wood, #carbon')); }
-            else if (preset == "carbon"){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $("#carbon"), $('#black, #grey, #wood')); }
-            else{ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $("#wood"), $('#black, #grey, #carbon')); }
+            if (preset == "black"){ background("black", 'black', 'none', $("#black")); }
+            else if (preset == "grey"){ background("grey", '#2c2f33', 'none', $("#grey")); }
+            else if (preset == "carbon"){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $("#carbon")); }
+            else{ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $("#wood")); }
         }
         else{ background("black", 'black', 'none', $("#black"), $('#grey, #wood, #carbon')); }
 
@@ -153,10 +139,10 @@ top:0px; width:25%; text-align:center; margin:0;">
                 .find('.rank, .name, .score').css('color', 'rgb(86, 206, 39)');
         }, 20);
 
-        $('#black').click(function(){ background("black", 'black', 'none', $(this), $('#grey, #wood, #carbon')); });
-        $('#grey').click(function(){ background("grey", '#2c2f33', 'none', $(this), $('#black, #wood, #carbon')); });
-        $('#wood').click(function(){ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $(this), $('#black, #grey, #carbon')); });
-        $('#carbon').click(function(){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $(this), $('#black, #grey, #wood')); });
+        $('#black').click(function(){ background("black", 'black', 'none', $(this)); });
+        $('#grey').click(function(){ background("grey", '#2c2f33', 'none', $(this)); });
+        $('#wood').click(function(){ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $(this)); });
+        $('#carbon').click(function(){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $(this)); });
 
         $.initialize('p[style="color: rgb(0, 0, 0);"]', function(){
             $(this).css("color", "white");
@@ -194,6 +180,13 @@ top:0px; width:25%; text-align:center; margin:0;">
         }
     }
 
+    function addRadio(name, dispName){
+        $(`<div style="background-color:transparent; position:relative; float:left;
+top:0px; width:25%; text-align:center; margin:0;">
+<input id=` + name + ` name=` + name + ` style="width:16px; height:16px; margin-top:15px" type="radio">
+<label for=` + name + ` style="all: initial; color:white; font-family:calibri; vertical-align:2px; width:25%;">` + dispName +`</label><br>`).appendTo($("#formLogin"));
+    }
+
     function background(name, color, image, check, uncheck){
         accessory = color;
         localStorage.setItem("background", name);
@@ -201,7 +194,7 @@ top:0px; width:25%; text-align:center; margin:0;">
             .css('background-image', image)
             .css('background-color', color);
         check.prop("checked",true);
-        uncheck.prop("checked",false);
+        $("#formLogin :not('#" + name + "')").prop("checked",false);
     }
 
     function delay(n){ return new Promise(resolve => { setTimeout(() => { resolve(); }, n); }); } //synchronous delay for n ms
