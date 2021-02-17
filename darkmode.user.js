@@ -68,12 +68,12 @@ top:0px; width:25%; text-align:center; margin:0;">
 
         var preset = localStorage.getItem('background');
         if (preset !== null){
-            if (preset == "black"){black();}
-            else if (preset == "grey"){grey();}
-            else if (preset == "carbon"){carbon();}
-            else{wood();}
+            if (preset == "black"){ background("black", 'black', 'none', $("#black"), $('#grey, #wood, #carbon')); }
+            else if (preset == "grey"){ background("grey", '#2c2f33', 'none', $("#grey"), $('#black, #wood, #carbon')); }
+            else if (preset == "carbon"){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $("#carbon"), $('#black, #grey, #wood')); }
+            else{ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $("#wood"), $('#black, #grey, #carbon')); }
         }
-        else{black();}
+        else{ background("black", 'black', 'none', $("#black"), $('#grey, #wood, #carbon')); }
 
         $(".logo").attr('src', 'https://i.imgur.com/qsHVGvg.png');
         $("#logoAvatarContainer").remove();
@@ -153,21 +153,10 @@ top:0px; width:25%; text-align:center; margin:0;">
                 .find('.rank, .name, .score').css('color', 'rgb(86, 206, 39)');
         }, 20);
 
-        $('#black').click(function() {
-            black();
-        });
-
-        $('#grey').click(function() {
-            grey();
-        });
-
-        $('#wood').click(function() {
-            wood();
-        });
-
-        $('#carbon').click(function() {
-            carbon();
-        });
+        $('#black').click(function(){ background("black", 'black', 'none', $(this), $('#grey, #wood, #carbon')); });
+        $('#grey').click(function(){ background("grey", '#2c2f33', 'none', $(this), $('#black, #wood, #carbon')); });
+        $('#wood').click(function(){ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $(this), $('#black, #grey, #carbon')); });
+        $('#carbon').click(function(){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $(this), $('#black, #grey, #wood')); });
 
         $.initialize('p[style="color: rgb(0, 0, 0);"]', function(){
             $(this).css("color", "white");
@@ -205,48 +194,14 @@ top:0px; width:25%; text-align:center; margin:0;">
         }
     }
 
-    function black(){
-        localStorage.setItem("background","black");
-        $("body").css('background-image', 'none');
-        $("body").css('background-color', 'black');
-        accessory = 'black';
-        $('#black').prop("checked",true);
-        $('#grey').prop("checked",false);
-        $('#carbon').prop("checked",false);
-        $('#wood').prop("checked",false);
-    }
-
-    function grey(){
-        localStorage.setItem("background","grey");
-        $("body").css('background-image', 'none');
-        $("body").css('background-color', '#2c2f33');
-        accessory = '#2c2f33';
-        $('#grey').prop("checked",true);
-        $('#black').prop("checked",false);
-        $('#carbon').prop("checked",false);
-        $('#wood').prop("checked",false);
-    }
-
-    function wood(){
-        localStorage.setItem("background","wood");
-        $("body").css('background-color', 'rgb(35,35,35)');
-        $("body").css('background-image', 'url(https://i.imgur.com/7Prf6.jpg)');
-        accessory = 'rgb(35,35,35)';
-        $('#wood').prop("checked",true);
-        $('#black').prop("checked",false);
-        $('#carbon').prop("checked",false);
-        $('#grey').prop("checked",false);
-    }
-
-    function carbon(){
-        localStorage.setItem("background","carbon");
-        $("body").css('background-color', 'rgb(25,25,25)');
-        $("body").css('background-image', 'url(https://st.depositphotos.com/1915171/3376/v/600/depositphotos_33765721-stock-illustration-carbon-fiber-texture-seamless-vector.jpg)');
-        accessory = 'rgb(25,25,25)';
-        $('#carbon').prop("checked",true);
-        $('#black').prop("checked",false);
-        $('#wood').prop("checked",false);
-        $('#grey').prop("checked",false);
+    function background(name, color, image, check, uncheck){
+        accessory = color;
+        localStorage.setItem("background", name);
+        $("body")
+            .css('background-image', image)
+            .css('background-color', color);
+        check.prop("checked",true);
+        uncheck.prop("checked",false);
     }
 
     function delay(n){ return new Promise(resolve => { setTimeout(() => { resolve(); }, n); }); } //synchronous delay for n ms
