@@ -53,17 +53,17 @@
         addRadio("wood", `Wood`);
 
         switch (localStorage.getItem("background")){
-            case "black": background("black", 'black', 'none', $("#black")); break;
-            case "grey": background("grey", '#2c2f33', 'none', $("#grey")); break;
-            case "carbon": background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $("#carbon")); break;
-            case "wood": background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $("#wood")); break;
-            default: background("black", 'black', 'none', $("#black"));
+            case "black": background("black", 'black', 'none'); break;
+            case "grey": background("grey", '#2c2f33', 'none'); break;
+            case "carbon": background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)'); break;
+            case "wood": background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)'); break;
+            default: background("black", 'black', 'none');
         }
 
-        $('#black').click(function(){ background("black", 'black', 'none', $(this)); });
-        $('#grey').click(function(){ background("grey", '#2c2f33', 'none', $(this)); });
-        $('#wood').click(function(){ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)', $(this)); });
-        $('#carbon').click(function(){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)', $(this)); });
+        $('#black').click(function(){ background("black", 'black', 'none'); });
+        $('#grey').click(function(){ background("grey", '#2c2f33', 'none'); });
+        $('#wood').click(function(){ background("wood", 'rgb(35,35,35)', 'url(https://i.imgur.com/7Prf6.jpg)'); });
+        $('#carbon').click(function(){ background("carbon", 'rgb(25,25,25)', 'url(https://i.imgur.com/rATFXJ6.jpg)'); });
 
         $(".logo").attr('src', 'https://i.imgur.com/qsHVGvg.png');
         $("#logoAvatarContainer").remove();
@@ -186,13 +186,13 @@ top:0px; width:25%; text-align:center; margin:0;">
 <label for=` + name + ` style="all: initial; color:white; font-family:calibri; vertical-align:2px; width:25%;">` + dispName +`</label><br>`).appendTo($("#formLogin"));
     }
 
-    function background(name, color, image, check, uncheck){
+    function background(name, color, image){
         accessory = color;
         localStorage.setItem("background", name);
         $("body")
             .css('background-image', image)
             .css('background-color', color);
-        check.prop("checked",true);
+        $("#" + name).prop("checked",true);
         $("#formLogin :not('#" + name + "')").prop("checked",false);
     }
 
